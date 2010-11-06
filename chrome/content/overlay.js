@@ -57,20 +57,33 @@ var savemytabs = {
 		var min = today.getMinutes();
 
 		// Get the directory to save to:
-		var file = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("Home", this.Ci.nsIFile);
-		file.append("opentabs-" + String(yyyy) + prepare(mm) + prepare(dd) + "-" + prepare(hh) + prepare(min) + ".txt");
+		var file = null;
+		if(this.branch.getCharPref("directory") == "Home")
+		{
+			file = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("Home", this.Ci.nsIFile);
+		}
+		else
+		{
+			file = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
+			file.initWithPath(this.branch.getCharPref("directory"));
+		}
 
-		// Create file output stream:
-		var foStream = this.Cc["@mozilla.org/network/file-output-stream;1"].createInstance(this.Ci.nsIFileOutputStream);
+		if(file && file.exists)
+		{
+			file.append("opentabs-" + String(yyyy) + prepare(mm) + prepare(dd) + "-" + prepare(hh) + prepare(min) + ".txt");
 
-		// Write, create, truncate:
-		foStream.init(file, 0x02 | 0x08 | 0x20, 0666, 0);
+			// Create file output stream:
+			var foStream = this.Cc["@mozilla.org/network/file-output-stream;1"].createInstance(this.Ci.nsIFileOutputStream);
 
-		// Be sure to write Unicode:
-		var converter = this.Cc["@mozilla.org/intl/converter-output-stream;1"].createInstance(this.Ci.nsIConverterOutputStream);
-		converter.init(foStream, "UTF-8", 0, 0);
-		converter.writeString(lines.join("\r\n"));
-		converter.close();
+			// Write, create, truncate:
+			foStream.init(file, 0x02 | 0x08 | 0x20, 0666, 0);
+
+			// Be sure to write Unicode:
+			var converter = this.Cc["@mozilla.org/intl/converter-output-stream;1"].createInstance(this.Ci.nsIConverterOutputStream);
+			converter.init(foStream, "UTF-8", 0, 0);
+			converter.writeString(lines.join("\r\n"));
+			converter.close();
+		}
 
 		// Prepare for the next iteration:
 		var that = this;

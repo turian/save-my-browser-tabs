@@ -1,1 +1,6 @@
-<!ENTITY savemytabs.path "Path tosave file to">
+<!ENTITY savemytabs.options.title "Save My Tabs options">
+<!ENTITY savemytabs.options.save "Save">
+<!ENTITY savemytabs.options.period "Period, in minutes, between saves">
+<!ENTITY savemytabs.options.directory "Directory to save file to">
+<!ENTITY savemytabs.options.choose "Choose directory">
+<!ENTITY savemytabs.options.reset "Reset to default">
