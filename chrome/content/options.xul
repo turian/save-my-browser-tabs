@@ -28,12 +28,12 @@
 	<script src="options.js" />
 
 	<vbox>
-		<label value="&savemytabs.options.period;:" />
-		<textbox id="savemytabs-period" value="15" />
+		<label control="savemytabs-period" value="&savemytabs.options.period;:" />
+		<textbox id="savemytabs-period" type="number" min="1" value="15" />
 
 		<spacer style="height:10px;" />
 
-		<label value="&savemytabs.options.directory;:" />
+		<label control="savemytabs-directory" value="&savemytabs.options.directory;:" />
 		<textbox id="savemytabs-directory" value="Home" />
 		<hbox>
 			<button id="savemytabs-choose" label="&savemytabs.options.choose;" oncommand="savemytabs.options.chooseDir();"/>
