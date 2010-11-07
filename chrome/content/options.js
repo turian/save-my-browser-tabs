@@ -22,13 +22,20 @@ savemytabs.options = {
 	{
 		const nsIFilePicker = this.Ci.nsIFilePicker;
 
-		var fp = this.Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
-		fp.init(window, "Choose directory", nsIFilePicker.modeGetFolder);
+		var filePicker = this.Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+		filePicker.init(window, "Choose directory", nsIFilePicker.modeGetFolder);
 
-		if(fp.show() == nsIFilePicker.returnOK)
+		try
 		{
-			document.getElementById("savemytabs-directory").value = this.filterDir(fp.fileURL.spec);
+			var initialDirectory = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
+			initialDirectory.initWithPath(document.getElementById("savemytabs-directory").value);
+
+			filePicker.displayDirectory = initialDirectory;
 		}
+		catch(e) { }
+
+		if(filePicker.show() == nsIFilePicker.returnOK)
+			document.getElementById("savemytabs-directory").value = filePicker.file.path;
 	},
 
 	reset: function()
@@ -58,22 +65,11 @@ savemytabs.options = {
 
 		this.branch.setIntPref("period", period);
 
-		var directory = this.filterDir(document.getElementById("savemytabs-directory").value);
+		var directory = document.getElementById("savemytabs-directory").value;
 
 		if(!directory.length)
 			directory = "Home";
 
 		this.branch.setCharPref("directory", directory);
-	},
-
-	// Filter "file:///" from the directory name:
-	filterDir: function(dir)
-	{
-		if(dir.indexOf("file:///") == 0)
-		{
-			dir = dir.substr(8);
-		}
-
-		return dir;
 	}
 };
