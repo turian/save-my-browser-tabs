@@ -1,0 +1,59 @@
+Save My Tabs
+============
+
+DESCRIPTION
+===========
+
+Save My Tabs is an extension for Mozilla Firefox that periodically saves info
+on all of your open tabs to a text file (URL and title of each tab).
+
+USAGE
+=====
+
+Save My Tabs doesn't require any user intervention. Every several minutes, as
+defined by it's preferences, extension creates a new file (in the directory
+that's path is stored in preferences), that contains info on all open tabs
+user had kept opened by the time the file was created. One line per tab; each
+line contains URL of the tab and it's title, separated by a tabular delimiter.
+
+Default period is 15 minutes between backups; default directory is user's
+profile (Windows) or home (Linux/Mac OS X) directory.
+
+User can change these values through the Options dialog (Tools menu, Addons
+item, "Options" button of "Save My Tabs"). "Choose directory" button allows
+user to choose the directory where the files will be created; "Reset to
+default" button returns the directory to it's "Home" value.
+
+PACKAGING
+=========
+
+The .xpi file can be created manually by using the 'zip' command (or any other
+zipping software). The resulting .xpi file should contain the following files:
+
+chrome/content/options.js
+chrome/content/options.xul
+chrome/content/overlay.js
+chrome/content/overlay.xul
+chrome/locale/en-US/savemytabs.dtd
+chrome/skin/options.css
+chrome/skin/savemytabs.png
+defaults/preferences/savemytabs.js
+install.rdf
+chrome.manifest
+
+Under linux, the following instruction builds the .xpi file:
+
+$ zip -r savemytabs.xpi install.rdf chrome.manifest chrome defaults
+
+INSTALLATION
+============
+
+The extension can be installed by drag-and-dropping the 'savemytabs.xpi' file
+over an existing Firefox window, or by pointing Firefox (through File menu,
+"Open File..." item) to the local URL where the file is stored.
+
+AUTHORS
+=======
+
+Copyright 2010 Joseph Turian (turian@gmail.com).
+Developed by Dmitriy Khudorozhkov (dmitriykhudorozhkov@yahoo.com).

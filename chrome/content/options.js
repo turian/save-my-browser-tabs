@@ -49,18 +49,30 @@ savemytabs.options = {
 
 		var period = document.getElementById("savemytabs-period").value;
 
-		try
+		if(!period.length)
 		{
-			period = parseInt(period, 10);
+			period = 15;
+		}
+		else
+		{
+			try
+			{
+				period = parseInt(period, 10);
 
-			if(!period)
+				if(!period)
+				{
+					period = 15;
+				}
+				else
+				{
+					if(period < 0)
+						period = 15;
+				}
+			}
+			catch(e)
 			{
 				period = 15;
 			}
-		}
-		catch(e)
-		{
-			period = 15;
 		}
 
 		this.branch.setIntPref("period", period);
