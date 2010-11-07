@@ -3,7 +3,7 @@
 
 	<Description about="urn:mozilla:install-manifest">
 
-		<em:id>savemytabs@joseph.turian</em:id>
+		<em:id>savemytabs@dmitriy.khudorozhkov</em:id>
 		<em:name>Save My Tabs</em:name>
 		<em:version>0.3</em:version>
 		<em:creator>Dmitriy Khudorozhkov</em:creator>
