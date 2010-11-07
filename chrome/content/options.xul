@@ -34,10 +34,10 @@
 		<spacer style="height:10px;" />
 
 		<label value="&savemytabs.options.directory;:" />
+		<textbox id="savemytabs-directory" value="Home" />
 		<hbox>
-			<textbox id="savemytabs-directory" value="Home" />
-			<button label="&savemytabs.options.choose;" oncommand="savemytabs.options.chooseDir();"/>
-			<button label="&savemytabs.options.reset;" oncommand="savemytabs.options.reset();"/>
+			<button id="savemytabs-choose" label="&savemytabs.options.choose;" oncommand="savemytabs.options.chooseDir();"/>
+			<button id="savemytabs-reset" label="&savemytabs.options.reset;" oncommand="savemytabs.options.reset();"/>
 		</hbox>
 	</vbox>
 

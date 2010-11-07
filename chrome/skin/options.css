@@ -8,3 +8,8 @@
 	min-width: 350px;
 	max-width: 350px;
 }
+
+#savemytabs-choose, #savemytabs-reset
+{
+	max-width: 100px;
+}
