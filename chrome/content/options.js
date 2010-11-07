@@ -25,14 +25,21 @@ savemytabs.options = {
 		var filePicker = this.Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
 		filePicker.init(window, "Choose directory", nsIFilePicker.modeGetFolder);
 
-		try
+		if(document.getElementById("savemytabs-directory").value == "Home")
 		{
-			var initialDirectory = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
-			initialDirectory.initWithPath(document.getElementById("savemytabs-directory").value);
-
-			filePicker.displayDirectory = initialDirectory;
+			filePicker.displayDirectory = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("Home", this.Ci.nsIFile);
 		}
-		catch(e) { }
+		else
+		{
+			try
+			{
+				var initialDirectory = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
+				initialDirectory.initWithPath(document.getElementById("savemytabs-directory").value);
+
+				filePicker.displayDirectory = initialDirectory;
+			}
+			catch(e) { }
+		}
 
 		if(filePicker.show() == nsIFilePicker.returnOK)
 			document.getElementById("savemytabs-directory").value = filePicker.file.path;
