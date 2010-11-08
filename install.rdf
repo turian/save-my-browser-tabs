@@ -5,7 +5,7 @@
 
 		<em:id>savemytabs@dmitriy.khudorozhkov</em:id>
 		<em:name>Save My Tabs</em:name>
-		<em:version>0.3</em:version>
+		<em:version>0.4</em:version>
 		<em:creator>Dmitriy Khudorozhkov</em:creator>
 		<em:description>Firefox extension to periodically save all of your open tabs to a text file (URL and title of each tab)</em:description>
 		<em:optionsURL>chrome://savemytabs/content/options.xul</em:optionsURL>
