@@ -111,7 +111,7 @@ var savemytabs = {
 			file.initWithPath(this.branch.getCharPref("directory"));
 		}
 
-		if(file && file.exists)
+		if(file && file.exists())
 		{
 			file.append("opentabs-" + String(yyyy) + prepare(mm) + prepare(dd) + "-" + prepare(hh) + prepare(min) + ".txt");
 
