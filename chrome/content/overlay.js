@@ -39,6 +39,22 @@ var savemytabs = {
 	// Initialization:
 	init: function()
 	{
+		// Check if we're running the very 1st instance of browser or not:
+		var instances = 0;
+
+		var wm = this.Cc["@mozilla.org/appshell/window-mediator;1"].getService(this.Ci.nsIWindowMediator);  
+		var browserEnumerator = wm.getEnumerator("navigator:browser");  
+
+		while(browserEnumerator.hasMoreElements())
+		{
+			var browserWin = browserEnumerator.getNext();
+			++instances;
+		}
+
+		// Don't initialize if there are more open windows:
+		if(instances > 1)
+			return;
+
 		// Initialize preferences:
 		var prefservice = this.Cc["@mozilla.org/preferences-service;1"].getService(this.Ci.nsIPrefService);
 		this.branch = prefservice.getBranch("extensions.savemytabs.");
@@ -56,15 +72,26 @@ var savemytabs = {
 	// Saving the state of tabs:
 	save: function()
 	{
-		// Cycle through the tabs:
-		var nbrowsers = gBrowser.browsers.length;
 		var lines = [];
 
-		for(var i = 0; i < nbrowsers; i++)
-		{
-			var browser = gBrowser.browsers[i];
+		// Cycle through the windows:
+		var wm = this.Cc["@mozilla.org/appshell/window-mediator;1"].getService(this.Ci.nsIWindowMediator);  
+		var browserEnumerator = wm.getEnumerator("navigator:browser");  
 
-			lines.push(browser.currentURI.spec + "\t" + browser.contentDocument.title);
+		while(browserEnumerator.hasMoreElements())
+		{
+			var browserWin = browserEnumerator.getNext();
+			var tabbrowser = browserWin.gBrowser;
+
+			// Cycle through the tabs:
+			var nbrowsers = tabbrowser.browsers.length;
+
+			for(var i = 0; i < nbrowsers; i++)
+			{
+				var browser = tabbrowser.browsers[i];
+
+				lines.push(browser.currentURI.spec.replace("\t", " ") + "\t" + browser.contentDocument.title.replace("\t", " "));
+			}
 		}
 
 		// Extract current date/time:
