@@ -115,7 +115,7 @@ var savemytabs = {
 
 			default:
 				file = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
-				file.initWithPath(this.branch.getCharPref("directory"));
+				file.initWithPath(dir);
 		}
 
 		if(file && file.exists())

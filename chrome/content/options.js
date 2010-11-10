@@ -68,7 +68,7 @@ savemytabs.options = {
 
 			default:
 				var initialDirectory = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
-				initialDirectory.initWithPath(document.getElementById("savemytabs-directory").value);
+				initialDirectory.initWithPath(dir);
 
 				filePicker.displayDirectory = initialDirectory;
 		}
