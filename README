@@ -17,12 +17,14 @@ user had kept opened by the time the file was created. One line per tab; each
 line contains URL of the tab and it's title, separated by a tabular delimiter.
 
 Default period is 15 minutes between backups; default directory is user's
-profile (Windows) or home (Linux/Mac OS X) directory.
+profile directory under Firefox folder.
 
 User can change these values through the Options dialog (Tools menu, Addons
 item, "Options" button of "Save My Tabs"). "Choose directory" button allows
 user to choose the directory where the files will be created; "Reset to
-default" button returns the directory to it's "Home" value.
+Profile" button returns the directory to it's "Profile" value (Firefox's
+user profile), "Reset to Home" - user's home directory (Linux/Mac OS) or
+user's system profile (Windows).
 
 PACKAGING
 =========

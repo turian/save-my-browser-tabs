@@ -101,14 +101,21 @@ var savemytabs = {
 
 		// Get the directory to save to:
 		var file = null;
-		if(this.branch.getCharPref("directory") == "Home")
+		var dir = this.branch.getCharPref("directory");
+
+		switch(dir)
 		{
-			file = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("Home", this.Ci.nsIFile);
-		}
-		else
-		{
-			file = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
-			file.initWithPath(this.branch.getCharPref("directory"));
+			case "Profile":
+				file = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("ProfD", this.Ci.nsIFile);
+				break;
+
+			case "Home":
+				file = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("Home", this.Ci.nsIFile);
+				break;
+
+			default:
+				file = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
+				file.initWithPath(this.branch.getCharPref("directory"));
 		}
 
 		if(file && file.exists())

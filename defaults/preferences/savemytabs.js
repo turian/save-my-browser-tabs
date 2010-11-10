@@ -1,2 +1,2 @@
-pref("extensions.savemytabs.period",    15);     /* Period, in minutes, the state of tabs is saved */
-pref("extensions.savemytabs.directory", "Home"); /* Directory to save files to; "Home" for user's profile directory */
+pref("extensions.savemytabs.period",    15);        /* Period, in minutes, the state of tabs is saved */
+pref("extensions.savemytabs.directory", "Profile"); /* Directory to save files to; "Profile" is Firefox's user profile directory, "Home" is user's home directory */

@@ -3,4 +3,5 @@
 <!ENTITY savemytabs.options.period "Period, in minutes, between saves">
 <!ENTITY savemytabs.options.directory "Directory to save file to">
 <!ENTITY savemytabs.options.choose "Choose directory">
-<!ENTITY savemytabs.options.reset "Reset to default">
+<!ENTITY savemytabs.options.resetP "Reset to Profile">
+<!ENTITY savemytabs.options.resetH "Reset to Home">

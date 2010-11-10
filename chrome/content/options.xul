@@ -53,7 +53,8 @@
 		<textbox id="savemytabs-directory" value="Home" />
 		<hbox>
 			<button id="savemytabs-choose" label="&savemytabs.options.choose;" oncommand="savemytabs.options.chooseDir();"/>
-			<button id="savemytabs-reset" label="&savemytabs.options.reset;" oncommand="savemytabs.options.reset();"/>
+			<button id="savemytabs-resetP" label="&savemytabs.options.resetP;" oncommand="savemytabs.options.reset('Profile');"/>
+			<button id="savemytabs-resetH" label="&savemytabs.options.resetH;" oncommand="savemytabs.options.reset('Home');"/>
 		</hbox>
 	</vbox>
 

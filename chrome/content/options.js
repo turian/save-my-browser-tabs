@@ -54,29 +54,32 @@ savemytabs.options = {
 		var filePicker = this.Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
 		filePicker.init(window, "Choose directory", nsIFilePicker.modeGetFolder);
 
-		if(document.getElementById("savemytabs-directory").value == "Home")
+		var dir = document.getElementById("savemytabs-directory").value;
+
+		switch(dir)
 		{
-			filePicker.displayDirectory = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("Home", this.Ci.nsIFile);
-		}
-		else
-		{
-			try
-			{
+			case "Profile":
+				filePicker.displayDirectory = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("ProfD", this.Ci.nsIFile);
+				break;
+
+			case "Home":
+				filePicker.displayDirectory = this.Cc["@mozilla.org/file/directory_service;1"].getService(this.Ci.nsIProperties).get("Home", this.Ci.nsIFile);
+				break;
+
+			default:
 				var initialDirectory = this.Cc["@mozilla.org/file/local;1"].createInstance(this.Ci.nsILocalFile);
 				initialDirectory.initWithPath(document.getElementById("savemytabs-directory").value);
 
 				filePicker.displayDirectory = initialDirectory;
-			}
-			catch(e) { }
 		}
 
 		if(filePicker.show() == nsIFilePicker.returnOK)
 			document.getElementById("savemytabs-directory").value = filePicker.file.path;
 	},
 
-	reset: function()
+	reset: function(what)
 	{
-		document.getElementById("savemytabs-directory").value = "Home";
+		document.getElementById("savemytabs-directory").value = what;
 	},
 
 	save: function()
