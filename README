@@ -5,7 +5,8 @@ DESCRIPTION
 ===========
 
 Save My Tabs is an extension for Mozilla Firefox that periodically saves info
-on all of your open tabs to a text file (URL and title of each tab).
+on all of your open tabs to a text file (window and tab numbers, URL and title
+of each tab).
 
 USAGE
 =====
@@ -14,7 +15,8 @@ Save My Tabs doesn't require any user intervention. Every several minutes, as
 defined by it's preferences, extension creates a new file (in the directory
 that's path is stored in preferences), that contains info on all open tabs
 user had kept opened by the time the file was created. One line per tab; each
-line contains URL of the tab and it's title, separated by a tabular delimiter.
+line contains window number and tab number (in left-to-right order for each
+window), URL of the tab and it's title, separated by a tabular delimiter.
 
 Default period is 15 minutes between backups; default directory is user's
 profile directory under Firefox folder.
