@@ -63,6 +63,7 @@ var savemytabs = {
 		var lines = [];
 
 		// Cycle through the windows:
+		var w = 1, t = 1;
 		var browserEnumerator = mediator.getEnumerator("navigator:browser");  
 
 		while(browserEnumerator.hasMoreElements())
@@ -77,8 +78,11 @@ var savemytabs = {
 			{
 				var browser = tabbrowser.browsers[i];
 
-				lines.push(browser.currentURI.spec.replace("\t", " ") + "\t" + browser.contentDocument.title.replace("\t", " "));
+				lines.push(("window #" + w + "/tab #" + (t++)) + "\t" + browser.currentURI.spec.replace("\t", " ") + "\t" + browser.contentDocument.title.replace("\t", " "));
 			}
+
+			++w;
+			t = 1;
 		}
 
 		// Extract current date/time:
