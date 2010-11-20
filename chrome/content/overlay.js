@@ -120,7 +120,7 @@ var savemytabs = {
 
 		if(file && file.exists())
 		{
-			file.append("opentabs-" + String(yyyy) + prepare(mm) + prepare(dd) + "-" + prepare(hh) + prepare(min) + ".txt");
+			file.append("opentabs-" + this.getUserName() + "-" + String(yyyy) + prepare(mm) + prepare(dd) + "-" + prepare(hh) + prepare(min) + ".txt");
 
 			// Create file output stream:
 			var foStream = this.Cc["@mozilla.org/network/file-output-stream;1"].createInstance(this.Ci.nsIFileOutputStream);
@@ -148,6 +148,25 @@ var savemytabs = {
 			that.save();
 		},
 		this.branch.getIntPref("period") * 60 * 1000);
+	},
+
+	getUserName: function()
+	{
+		var env = this.Cc["@mozilla.org/process/environment;1"].getService(this.Ci.nsIEnvironment);
+		var user = "";
+
+		if(env.exists("computername"))
+			user = env.get('computername');
+
+		if(!user.length)
+			if(env.exists("username"))
+				user = env.get('username');
+
+		if(!user.length)
+			if(env.exists("user"))
+				user = env.get('user');
+
+		return user;
 	}
 };
 
