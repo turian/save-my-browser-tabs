@@ -1,0 +1,17 @@
+Save My Tabs
+============
+
+DESCRIPTION
+===========
+
+Save My Tabs is an extension for Mozilla Firefox and Google Chrome browsers
+that periodically saves info on all of your open tabs to a text file (window
+and tab numbers, URL and title of each tab).
+
+Please see individual directories for usage and installation details.
+
+AUTHORS
+=======
+
+Copyright 2010 Joseph Turian.
+Developed by Dmitriy Khudorozhkov.
