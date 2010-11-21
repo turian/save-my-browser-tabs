@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title>Save My Tabs Options</title>
+
+		<script type="text/javascript">
+
+			function setItem(key, value)
+			{
+				try
+				{
+					window.localStorage.removeItem(key);
+					window.localStorage.setItem(key, value);
+				}
+				catch(e) { }
+			}
+
+			function getItem(key)
+			{
+				var value;
+				try
+				{
+					value = window.localStorage.getItem(key);
+				}
+				catch(e)
+				{
+					value = null;
+				}
+
+				return value;
+			}
+
+			// Saves options to localStorage:
+			function save_options()
+			{
+				var period = document.getElementById("period").value;
+
+				if(!period.length)
+				{
+					alert("Period cannot be empty!");
+					return;
+				}
+
+				period = parseInt(period, 10);
+
+				if(!period || (period < 1))
+				{
+					alert("Period cannot be less than 1 minute!");
+					return;
+				}
+
+				setItem("save-my-tabs;period", period);
+
+				// Update status to let user know options were saved.
+				var status = document.getElementById("status");
+				status.innerHTML = "Options saved.";
+
+				setTimeout(function()
+				{
+					status.innerHTML = "";
+				},
+				1000);
+			}
+
+			// Restores select box state to saved value from localStorage:
+			function restore_options()
+			{
+				var period = getItem("save-my-tabs;period");
+
+				if(!period || (period < 1))
+				{
+					setItem("save-my-tabs;period", 15);
+					period = 15;
+				}
+
+				document.getElementById("period").value = period;
+			}
+
+		</script>
+	</head>
+
+	<body onload="restore_options()">
+		<span>Period, in minutes, between saves:</span>
+		<br>
+		<input id="period" value="" />
+		<br>
+		<br>
+		<button onclick="save_options()">Save</button>
+	</body>
+</html>

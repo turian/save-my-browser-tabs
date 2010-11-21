@@ -1,0 +1,4 @@
+content	savemytabs	chrome/content/
+locale	savemytabs	en-US	chrome/locale/en-US/
+skin	savemytabs	classic/1.0	chrome/skin/
+overlay	chrome://browser/content/browser.xul	chrome://savemytabs/content/overlay.xul

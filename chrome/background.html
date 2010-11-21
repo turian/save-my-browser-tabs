@@ -1,0 +1,134 @@
+<html>
+	<head>
+		<script>
+			function setItem(key, value)
+			{
+				try
+				{
+					window.localStorage.removeItem(key);
+					window.localStorage.setItem(key, value);
+				}
+				catch(e) { }
+			}
+
+			function getItem(key)
+			{
+				var value;
+				try
+				{
+					value = window.localStorage.getItem(key);
+				}
+				catch(e)
+				{
+					value = "null";
+				}
+
+				return value;
+			}
+
+			function getPeriod()
+			{
+				var period = getItem("save-my-tabs;period");
+
+				if(!period || (period < 1))
+				{
+					setItem("save-my-tabs;period", 15);
+					period = 15;
+				}
+
+				return period;
+			}
+
+			function collectInfo(callback)
+			{
+				chrome.windows.getAll({"populate" : true}, function(windows)
+				{
+					var lines = [];
+					var numWindows = windows.length;
+
+					for(var i = 0; i < numWindows; i++)
+					{
+						var win = windows[i];
+						var numTabs = win.tabs.length;
+
+						for(var j = 0; j < numTabs; j++)
+						{
+							var tab = win.tabs[j];
+
+							lines.push([tab.url.replace(/\t/g, " "), tab.title.replace(/\t/g, " ")]);
+						}
+					}
+
+					if(callback)
+						callback(lines);
+				});
+			}
+
+			function createDb(records)
+			{
+				// Extract current date/time:
+				function prepare(num)
+				{
+					var str = String(num);
+
+					if(str.length < 2)
+						str = "0" + str;
+
+					return str;
+				}
+
+				var today = new Date();
+				var yyyy = today.getFullYear();
+				var mm = today.getMonth() + 1;
+				var dd = today.getDate();
+				var hh = today.getHours();
+				var min = today.getMinutes();
+
+				var name = "opentabs-" + String(yyyy) + prepare(mm) + prepare(dd) + "-" + prepare(hh) + prepare(min);
+
+				var db = openDatabase(name, "1.0", "Save My Tabs database", 1024 * 1024);
+
+				db.transaction(function(tx)
+				{
+					var onSuccess = function(tx, r)
+					{
+						// alert("Success! " + r.rowsAffected);
+					};
+
+					var onError = function(tx, e)
+					{
+						// alert('Something unexpected happened: ' + e);
+					};
+
+					tx.executeSql("CREATE TABLE save_my_tabs_records (id INTEGER PRIMARY KEY AUTOINCREMENT, url VARCHAR(250), title VARCHAR(250))", [], function()
+					{
+						for(var i = 0; i < records.length; i++)
+							tx.executeSql("INSERT INTO save_my_tabs_records (url, title) VALUES (?, ?)", records[i], onSuccess, onError);
+					},
+					onError);
+				});
+			}
+
+			function saveData()
+			{
+				collectInfo(function(records)
+				{
+					createDb(records);
+
+					setTimeout(function()
+					{
+						saveData();
+					},
+					getPeriod() * 60 * 1000);
+				});
+			}
+
+			// Startup:
+			setTimeout(function()
+			{
+				saveData();
+			},
+			getPeriod() * 60 * 1000);
+		</script>
+	</head>
+</html>
