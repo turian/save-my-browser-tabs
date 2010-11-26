@@ -2,6 +2,25 @@
 	<head>
 		<title>Save My Tabs Options</title>
 
+		<style type="text/css">	
+			#content
+			{
+				width: 300px;
+				height: 100%;
+				margin: 0px auto;
+				position: relative;
+			}
+
+			#main
+			{
+				position: absolute;
+				top: 50%;
+
+				height: 200px;
+				margin-top: -100px;
+			}
+		</style>
+
 		<script type="text/javascript">
 
 			function setItem(key, value)
@@ -79,11 +98,12 @@
 	</head>
 
 	<body onload="restore_options()">
-		<span>Period, in minutes, between saves:</span>
-		<br>
-		<input id="period" value="" />
-		<br>
-		<br>
-		<button onclick="save_options()">Save</button>
+		<div id="content">
+			<div id="main">
+				<span>Period, in minutes, between saves:</span>
+				<br>
+				<input id="period" value="" />&nbsp;<button onclick="save_options()">Update</button>
+			</div>
+		</div>
 	</body>
 </html>
