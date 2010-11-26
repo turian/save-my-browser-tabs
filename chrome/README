@@ -57,14 +57,23 @@ EXTRACTING DATA
 Before extracting the data from database files, you should have the following
 at hand:
 
-- Extension ID. This can be retrieved from the Chrome's extensions control page
- ('chrome://extensions'); ID is 32-symbol string just below the description of
-  'Save My Tabs'.
-
 - SQLite executable for your operating system. Precompiled binaries for some
   operating systems can be downloaded from:
 
   http://www.sqlite.org/download.html
+
+- Extension ID. This can be retrieved from the Chrome's extensions control page
+ ('chrome://extensions'); ID is 32-symbol string just below the description of
+  'Save My Tabs'.
+
+- path to the user's database directory, derived from the extension ID (above)
+  and user data directory path:
+
+  http://www.chromium.org/user-experience/user-data-directory
+
+Database path is:
+
+  [user-data-dir]/databases/chrome-extension_[ID]_0/
 
 2. SQL statements.
 
@@ -83,6 +92,10 @@ at hand:
 Todo.
 
 3.2. Linux (bash): 
+
+Todo.
+
+4. Bundled scripts.
 
 Todo.
 
