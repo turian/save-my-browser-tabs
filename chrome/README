@@ -52,6 +52,38 @@ unpacked extension' and choosing the folder where the source files are.
 EXTRACTING DATA
 ===============
 
+1. Prerequisites.
+
+Before extracting the data from database files, you should have the following
+at hand:
+
+- Extension ID. This can be retrieved from the Chrome's extensions control page
+ ('chrome://extensions'); ID is 32-symbol string just below the description of
+  'Save My Tabs'.
+
+- SQLite executable for your operating system. Precompiled binaries for some
+  operating systems can be downloaded from:
+
+  http://www.sqlite.org/download.html
+
+2. SQL statements.
+
+- retrieving the name of database:
+
+  SELECT name FROM save_my_tabs_options LIMIT 1
+
+- retrieving the tab records:
+
+  SELECT winindex, tabindex, url, title FROM save_my_tabs_records
+
+3. Extraction procedures.
+
+3.1. Windows: 
+
+Todo.
+
+3.2. Linux (bash): 
+
 Todo.
 
 AUTHORS
