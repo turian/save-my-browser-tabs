@@ -7,12 +7,6 @@
 	"permissions": [
 		"tabs", "unlimitedStorage", "http://*/*", "https://*/*"
 	],
-	"browser_action": {
-		"name": "Save My Tabs Options",
-		"default_icon": "savemytabs-32.png",
-		"default_title": "Save My Tabs",
-		"popup" : "options.html"
-	},
 	"icons": {
 		"48": "savemytabs-48.png"
 	}
