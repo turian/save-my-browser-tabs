@@ -38,7 +38,7 @@ PACKAGING
 The .crx file can be created with the help of Chrome browser. Navigate the
 Chrome to 'chrome://extensions' URL, expand the 'Developer mode' selector
 (right side of 'Extensions' band), click on 'Pack extension' button and choose
-the 
+the .
 
 INSTALLATION
 ============
@@ -48,6 +48,11 @@ file over an existing Chrome window, or, if you have the extension source files
 unpacked, by navigating Chrome to 'chrome://extensions' URL, expanding the
 'Developer mode' selector (right side of 'Extensions' band), clicking 'Load
 unpacked extension' and choosing the folder where the source files are.
+
+EXTRACTING DATA
+===============
+
+Todo.
 
 AUTHORS
 =======
