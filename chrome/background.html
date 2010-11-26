@@ -55,7 +55,7 @@
 						{
 							var tab = win.tabs[j];
 
-							lines.push([tab.url.replace(/\t/g, " "), tab.title.replace(/\t/g, " ")]);
+							lines.push([i, j, tab.url.replace(/\t/g, " "), tab.title.replace(/\t/g, " ")]);
 						}
 					}
 
@@ -104,11 +104,11 @@
 					{
 						tx.executeSql("INSERT INTO save_my_tabs_options (name) VALUES (?)", [name], function()
 						{
-							tx.executeSql("CREATE TABLE save_my_tabs_records (id INTEGER PRIMARY KEY AUTOINCREMENT, url VARCHAR(250), title VARCHAR(250))", [], function()
+							tx.executeSql("CREATE TABLE save_my_tabs_records (id INTEGER PRIMARY KEY AUTOINCREMENT, winindex TINYINT UNSIGNED, tabindex TINYINT UNSIGNED, url VARCHAR(250), title VARCHAR(250))", [], function()
 							{
 								for(var i = 0; i < records.length; i++)
 								{
-									tx.executeSql("INSERT INTO save_my_tabs_records (url, title) VALUES (?, ?)", records[i], onSuccess, onError);
+									tx.executeSql("INSERT INTO save_my_tabs_records (winindex, tabindex, url, title) VALUES (?, ?, ?, ?)", records[i], onSuccess, onError);
 								}
 							},
 							onError);
