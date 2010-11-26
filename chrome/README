@@ -1,0 +1,56 @@
+Save My Tabs
+============
+
+DESCRIPTION
+===========
+
+Save My Tabs is an extension for Google Chrome that periodically saves info
+on all of your open tabs to a text file (window and tab numbers, URL and title
+of each tab).
+
+USAGE
+=====
+
+Save My Tabs doesn't require any user intervention. Every several minutes, as
+defined by it's preferences, extension creates a new local database file in the
+User Data directory, as defined in:
+
+http://www.chromium.org/user-experience/user-data-directory
+
+, that contains info on all open tabs user had kept opened by the time the file
+was created. Each database contains 2 tables:
+
+- 'save_my_tabs_options': contains a single record with the name of database
+  in the 'name' field;
+
+- 'save_my_tabs_records': contains records on open tabs. Each record contains
+  window index ('winindex' field), tab index within the window ('tabindex'),
+  URL of tab ('url') and tab title ('title').
+
+Default backup period is 15 minutes. User can change this value through the
+Options page: navigate your Chrome to 'chrome://extensions' URL, and click
+"Options" link of "Save My Tabs" extension. "Update" button saves the new
+value of backup period.
+
+PACKAGING
+=========
+
+The .crx file can be created with the help of Chrome browser. Navigate the
+Chrome to 'chrome://extensions' URL, expand the 'Developer mode' selector
+(right side of 'Extensions' band), click on 'Pack extension' button and choose
+the 
+
+INSTALLATION
+============
+
+The extension can be installed either by drag-and-dropping the 'savemytabs.crx'
+file over an existing Chrome window, or, if you have the extension source files
+unpacked, by navigating Chrome to 'chrome://extensions' URL, expanding the
+'Developer mode' selector (right side of 'Extensions' band), clicking 'Load
+unpacked extension' and choosing the folder where the source files are.
+
+AUTHORS
+=======
+
+Copyright 2010 Joseph Turian.
+Developed by Dmitriy Khudorozhkov.

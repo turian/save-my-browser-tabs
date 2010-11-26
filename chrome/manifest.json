@@ -8,6 +8,7 @@
 		"tabs", "unlimitedStorage", "http://*/*", "https://*/*"
 	],
 	"icons": {
-		"48": "savemytabs-48.png"
+		"48": "savemytabs-48.png",
+		"128": "savemytabs-128.png"
 	}
 }
