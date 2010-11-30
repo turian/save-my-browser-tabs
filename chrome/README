@@ -78,21 +78,29 @@ Database path is:
 2. Extraction procedures.
 
 Bundled with the extension are the batch file (Windows) and bash script (Linux)
-that will help with the data extraction. Be sure to have the SQLite executable
-in the same directory where the batch file is.
+that will help with the data extraction.
 
 Before running the scripts, one should:
 
 - go to the Chrome's user directory (see above), enter "\default\databases\"
   directory and write down the name of directory that starts with
- "chrome-extension_".
+ "chrome-extension_";
 
 - edit the directory path in the batch file/bash script, so script has a
-  correct path to it.
+  correct path to it;
+
+- be sure to have the SQLite executable in the same directory where the batch
+  file is.
 
 2.1. Windows:
 
-- 
+Run the "extract.bat" to extract the data from Chrome user databases to the
+tab-separated files. Script creates one or more (equal to the number of new
+databases created by extension) .txt files in the same directory where the
+batch file is.
+
+Note that "extract.bat" file can be run from any directory, given the SQLite
+executable is in the same directory and paths in the batch file are correct.
 
 2.2. Linux:
 
