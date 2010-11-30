@@ -67,7 +67,7 @@ at hand:
   'Save My Tabs'.
 
 - path to the user's database directory, derived from the extension ID (above)
-  and user data directory path:
+  and user data directory path, as defined in:
 
   http://www.chromium.org/user-experience/user-data-directory
 
