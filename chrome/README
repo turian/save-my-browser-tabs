@@ -108,7 +108,8 @@ executable is in the same directory and paths in the batch file are correct.
 
 2.2. Linux:
 
-Todo.
+Same behavior as Windows script, except that the "extract.sh" should be in your
+"/usr/bin" directory.
 
 AUTHORS
 =======
