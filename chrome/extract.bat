@@ -27,7 +27,7 @@ for /f %%a IN ('dir /b "%save-my-tabs-path%\"') do (
 
     REM Cleanup:
     del "%save-my-tabs-path%%%a"
-	set name%%a=
+    set name%%a=
 )
 
 REM Reset the variables:

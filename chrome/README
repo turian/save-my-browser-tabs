@@ -93,8 +93,8 @@ Before running the scripts, one should:
 - ensure that "save-my-tabs-id" variable in the batch file/bash script is equal
   to the extension id, so script has a correct path to the database files;
 
-- be sure to have the SQLite executable in the same directory where the batch
-  file is.
+- be sure to have the SQLite executable accessible (or just placed in the same
+  directory where the batch file is).
 
 2.1. Windows:
 
