@@ -75,27 +75,26 @@ Database path is:
 
   [user-data-dir]/databases/chrome-extension_[ID]_0/
 
-2. SQL statements.
+2. Extraction procedures.
 
-- retrieving the name of database:
+Bundled with the extension are the batch file (Windows) and bash script (Linux)
+that will help with the data extraction. Be sure to have the SQLite executable
+in the same directory where the batch file is.
 
-  SELECT name FROM save_my_tabs_options LIMIT 1
+Before running the scripts, one should:
 
-- retrieving the tab records:
+- go to the Chrome's user directory (see above), enter "\default\databases\"
+  directory and write down the name of directory that starts with
+ "chrome-extension_".
 
-  SELECT winindex, tabindex, url, title FROM save_my_tabs_records
+- edit the directory path in the batch file/bash script, so script has a
+  correct path to it.
 
-3. Extraction procedures.
+2.1. Windows:
 
-3.1. Windows: 
+- 
 
-Todo.
-
-3.2. Linux (bash): 
-
-Todo.
-
-4. Bundled scripts.
+2.2. Linux:
 
 Todo.
 
