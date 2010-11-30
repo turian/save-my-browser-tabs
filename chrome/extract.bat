@@ -5,9 +5,9 @@ set save-my-tabs-id="hdoaafjkhcfcoenfgjejgkjibjfdppni"
 
 REM Get the path to the database files.
 REM Windows XP or earlier:
-set save-my-tabs-path=%userprofile%\Local Settings\Application Data\Google\Chrome\User Data\Default\databases\chrome-extension_%save-my-tabs-id%_0\
+REM set save-my-tabs-path=%userprofile%\Local Settings\Application Data\Google\Chrome\User Data\Default\databases\chrome-extension_%save-my-tabs-id%_0\
 REM Windows Vista or later:
-REM set save-my-tabs-path=%userprofile%\AppData\Local\Google\Chrome\User Data\Default\databases\chrome-extension_hdoaafjkhcfcoenfgjejgkjibjfdppni_0\
+set save-my-tabs-path=%userprofile%\AppData\Local\Google\Chrome\User Data\Default\databases\chrome-extension_%save-my-tabs-id%_0\
 
 REM Cycle through the files in the db directory:
 for /f %%a IN ('dir /b "%save-my-tabs-path%\"') do (
