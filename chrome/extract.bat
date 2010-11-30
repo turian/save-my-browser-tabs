@@ -12,21 +12,24 @@ REM set save-my-tabs-path=%userprofile%\AppData\Local\Google\Chrome\User Data\De
 REM Cycle through the files in the db directory:
 for /f %%a IN ('dir /b "%save-my-tabs-path%\"') do (
 
-    REM Get db name:
-    sqlite3 "%save-my-tabs-path%%%a" "SELECT name FROM save_my_tabs_options LIMIT 1" > "tmp.tmp"
+    echo Source path: "%save-my-tabs-path%%%a"
 
-    set name=
-    set /p name=< "tmp.tmp"
-    del "tmp.tmp"
+    REM Get db name:
+    sqlite3 "%save-my-tabs-path%%%a" "SELECT name FROM save_my_tabs_options" > "%%a.txt"
+
+    set /p name%%a=<"%%a.txt"
+
+    echo Target path: "%name%%%a.txt"
+    del "%%a.txt"
 
     REM Output db rows to a tab-separated file:
-    sqlite3 -separator "	" "%save-my-tabs-path%%%a" "SELECT winindex, tabindex, url, title FROM save_my_tabs_records" > "%name%.txt"
+    sqlite3 -separator "	" "%save-my-tabs-path%%%a" "SELECT winindex, tabindex, url, title FROM save_my_tabs_records" > "%name%%%a.txt"
 
-    REM Delete the original database:
+    REM Cleanup:
     del "%save-my-tabs-path%%%a"
+	set name%%a=
 )
 
 REM Reset the variables:
 set save-my-tabs-id=
 set save-my-tabs-path=
-set name=
