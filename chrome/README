@@ -5,20 +5,26 @@ DESCRIPTION
 ===========
 
 Save My Tabs is an extension for Google Chrome that periodically saves info
-on all of your open tabs to a text file (window and tab numbers, URL and title
-of each tab).
+on all of your open tabs to SQLite databases (window and tab numbers, URL and
+title of each tab). Script files for Windows and Linux are bundled (see below)
+to help users extract data from these databases.
 
 USAGE
 =====
 
 Save My Tabs doesn't require any user intervention. Every several minutes, as
 defined by it's preferences, extension creates a new local database file in the
-User Data directory, as defined in:
+extension's databases directory. This directory is in user Data directory, as
+defined in:
 
 http://www.chromium.org/user-experience/user-data-directory
 
-, that contains info on all open tabs user had kept opened by the time the file
-was created. Each database contains 2 tables:
+and the path to databases is:
+
+[user data dir]\Default\databases\chrome-extension_[extension id]_0
+
+Each database contains info on all open tabs user had kept opened by the time
+the file was created. Each database contains 2 tables:
 
 - 'save_my_tabs_options': contains a single record with the name of database
   in the 'name' field;
@@ -73,7 +79,7 @@ at hand:
 
 Database path is:
 
-  [user-data-dir]/databases/chrome-extension_[ID]_0/
+  [user data dir]/databases/chrome-extension_[extension id]_0/
 
 2. Extraction procedures.
 
@@ -82,12 +88,10 @@ that will help with the data extraction.
 
 Before running the scripts, one should:
 
-- go to the Chrome's user directory (see above), enter "\default\databases\"
-  directory and write down the name of directory that starts with
- "chrome-extension_";
+- get the extension id (see above);
 
-- edit the directory path in the batch file/bash script, so script has a
-  correct path to it;
+- ensure that "save-my-tabs-id" variable in the batch file/bash script is equal
+  to the extension id, so script has a correct path to the database files;
 
 - be sure to have the SQLite executable in the same directory where the batch
   file is.

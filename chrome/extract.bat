@@ -1,8 +1,11 @@
 @echo off
 
-REM Get the path to the database files. Be sure to correct the "chrome-extension_hdoaafjkhcfcoenfgjejgkjibjfdppni_0" part!
+REM Extension id (be sure to correct it before running the script!):
+set save-my-tabs-id="hdoaafjkhcfcoenfgjejgkjibjfdppni"
+
+REM Get the path to the database files.
 REM Windows XP or earlier:
-set save-my-tabs-path=%userprofile%\Local Settings\Application Data\Google\Chrome\User Data\Default\databases\chrome-extension_hdoaafjkhcfcoenfgjejgkjibjfdppni_0\
+set save-my-tabs-path=%userprofile%\Local Settings\Application Data\Google\Chrome\User Data\Default\databases\chrome-extension_%save-my-tabs-id%_0\
 REM Windows Vista or later:
 REM set save-my-tabs-path=%userprofile%\AppData\Local\Google\Chrome\User Data\Default\databases\chrome-extension_hdoaafjkhcfcoenfgjejgkjibjfdppni_0\
 
@@ -24,5 +27,6 @@ for /f %%a IN ('dir /b "%save-my-tabs-path%\"') do (
 )
 
 REM Reset the variables:
+set save-my-tabs-id=
 set save-my-tabs-path=
 set name=
