@@ -1,7 +1,7 @@
 ﻿{
 	"name": "Save My Tabs",
 	"version": "0.1",
-	"description": "Chrome extension to periodically save all of your open tabs to a database file (URL and title of each tab)",
+	"description": "Chrome extension to periodically save all of your open tabs to a database file (window/tab index, URL and title of each tab)",
 	"background_page": "background.html",
 	"options_page": "options.html",
 	"permissions": [
