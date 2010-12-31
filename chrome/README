@@ -90,13 +90,14 @@ Before running the scripts, one should:
 
 - get the extension id (see above);
 
-- ensure that "save-my-tabs-id" variable in the batch file/bash script is equal
-  to the extension id, so script has a correct path to the database files;
-
-- be sure to have the SQLite executable accessible (or just placed in the same
-  directory where the batch file is).
-
 2.1. Windows:
+
+- ensure that "save-my-tabs-id" variable in the batch file is equal to the 
+  extension id, so script has a correct path to the database files;
+
+- be sure to have the SQLite 3 executable accessible (or just placed in the
+  same directory where the batch file is). You can download the Windows binary
+  from sqlite.org site.
 
 Run the "extract.bat" to extract the data from Chrome user databases to the
 tab-separated files. Script creates one or more (equal to the number of new
@@ -104,12 +105,23 @@ databases created by extension) .txt files in the same directory where the
 batch file is.
 
 Note that "extract.bat" file can be run from any directory, given the SQLite
-executable is in the same directory and paths in the batch file are correct.
+executable is in the same directory (or available through the environment)
+and paths in the batch file are correct.
 
 2.2. Linux:
 
-Same behavior as Windows script, except that the "extract.sh" should be in your
-"/usr/bin" directory.
+- ensure that "save_my_tabs_id" variable in the bash script is equal to the 
+  extension id, so script has a correct path to the database files;
+
+- ensure that "save_my_tabs_user" variable in the bash script is equal to your
+  user name, so script has a correct path to the database files.
+
+- be sure to have the sqlite3 package installed. You can check it's existance
+  with "sqlite3 -version" command through the terminal.
+
+When all of the above is done, you can run "sh extract.sh" through the
+terminal. Script will create the appropriate text files in your current
+directory.
 
 AUTHORS
 =======
