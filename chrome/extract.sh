@@ -6,7 +6,7 @@ save_my_tabs_id="jfddjacdkdbmgodjnanmokpalellkele"
 # User name - be sure to correct it before running the script!
 save_my_tabs_user="username"
 
-# Path to the database files - be sure to correct the user name:
+# Path to the database files:
 save_my_tabs_path="/home/"$save_my_tabs_user"/.config/google-chrome/Default/databases/chrome-extension_"$save_my_tabs_id"_0/"
 
 # Cycle through the files in the db directory:
